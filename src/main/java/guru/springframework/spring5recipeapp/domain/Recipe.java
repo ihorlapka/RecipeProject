@@ -1,6 +1,7 @@
 package guru.springframework.spring5recipeapp.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -24,6 +25,7 @@ public class Recipe {
     @Lob
     private String directions;
     
+    @ToString.Exclude
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
     
@@ -33,6 +35,7 @@ public class Recipe {
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
     
+    @ToString.Exclude
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     
